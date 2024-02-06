@@ -16,7 +16,7 @@ struct CartView: View {
                 VStack {
                     // Header
                     HStack {
-                        Text("Order From The Best OF **Snacks**")
+                        Text("Cart")
                             .font(.system(size: 36))
                             .padding(.trailing)
                         
@@ -25,28 +25,82 @@ struct CartView: View {
                         Button {
                             mode.wrappedValue.dismiss()
                         } label: {
+                            Text("3")
+                                .imageScale(.large)
+                                .padding()
+                                .frame(width: 70, height: 90)
+                                .background(.yellow.opacity(0.5))
+                                .clipShape(Capsule())
+                        }
+                        .foregroundStyle(.black)
+                        
+                        
+                        Button {
+                            mode.wrappedValue.dismiss()
+                        } label: {
                             Image(systemName: "arrow.left")
                                 .imageScale(.large)
                                 .padding()
                                 .frame(width: 70, height: 90)
-                                .overlay(RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4)
+                                }
                                 .foregroundStyle(.black)
                         }
                     }
                     .padding(23)
                     
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], content: {
-                        ForEach(productList, id: \.id) { item in
-                            ProductCard(product: item)
-                        }
-                    })
-                    .padding(.horizontal)
+                    // Cart Products
+                    ForEach(productList) { item in
+                        CartProductCard(product: item)
+                    }
+                    
+                    // Total Amount
+                    
+                    // Button to Make Payment
+                    
+                    
                 }
             }
         }
     }
 }
+    
+    #Preview {
+        CartView()
+    }
 
-#Preview {
-    CartView()
+// Cart Product View
+struct CartProductCard: View {
+    
+    var product: Product
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: 20) {
+            Image(product.image)
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .frame(width: 80, height: 80)
+                .background(.gray.opacity(0.1))
+                .clipShape(Capsule())
+            
+            VStack(alignment: .leading, content:  {
+                Text("\(product.name)")
+                    .font(.headline)
+                
+                Text(product.category)
+                    .font(.callout)
+                    .opacity(0.5)
+            })
+            
+            Spacer()
+            
+            Text("$\(product.price)")
+                .padding()
+                .background(.yellow.opacity(0.5))
+                .clipShape(Capsule())
+            
+        }
+    }
 }
