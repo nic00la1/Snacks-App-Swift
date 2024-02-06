@@ -13,45 +13,51 @@ struct Home: View {
     @State var selectedCategory = ""
     
     var body: some View {
-        ScrollView {
-            VStack {
-                // Header
-                HStack {
-                    Text("Order From The Best OF **Snacks**")
-                        .font(.system(size: 36))
-                        .padding(.trailing)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "line.3.horizontal")
-                        .imageScale(.large)
-                        .padding()
-                        .frame(width: 70, height: 90)
-                        .overlay(RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4))
-                }
-                .padding(23)
-                
-                // Category List
-                CategoryListView
-                
-                // Collection View
-                HStack {
-                    Text("Choco **Collections**")
-                        .font(.system(size: 24))
-                    
-                    Spacer()
-                    
-                    Image(systemName: "arrow.right")
-                        .imageScale(.large)
-                }
-                .padding(.horizontal, 30)
-                .padding(.vertical, 15)
-                
-                // Product List
-                ScrollView(.horizontal, showsIndicators: false){
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    // Header
                     HStack {
-                        ForEach(productList, id: \.id) { item in
-                            ProductCard(product: item)
+                        Text("Order From The Best OF **Snacks**")
+                            .font(.system(size: 36))
+                            .padding(.trailing)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "line.3.horizontal")
+                            .imageScale(.large)
+                            .padding()
+                            .frame(width: 70, height: 90)
+                            .overlay(RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4))
+                    }
+                    .padding(23)
+                    
+                    // Category List
+                    CategoryListView
+                    
+                    // Collection View
+                    HStack {
+                        Text("Choco **Collections**")
+                            .font(.system(size: 24))
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: CollectionView()) {
+                            Image(systemName: "arrow.right")
+                                .imageScale(.large)
+                                .foregroundStyle(.black)
+                        }
+                        
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 15)
+                    
+                    // Product List
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack {
+                            ForEach(productList, id: \.id) { item in
+                                ProductCard(product: item)
+                            }
                         }
                     }
                 }
@@ -149,16 +155,13 @@ struct ProductCard: View {
                     .frame(height: 80)
                     .background(.white.opacity(0.9))
                     .clipShape(Capsule())
-                    
-                    
                 })
             }
-            
             .padding(30)
             .frame(width: 336, height: 422)
-            .background(product.color.opacity(0.13))
-            .clipShape(.rect(cornerRadius: 57))
-            .padding(.leading, 20)
         }
+        .background(product.color.opacity(0.13))
+        .clipShape(.rect(cornerRadius: 57))
+        .padding(.leading, 20)
     }
 }
