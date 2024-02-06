@@ -29,17 +29,17 @@ struct Home: View {
                         .frame(width: 70, height: 90)
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4))
                 }
+                .padding(23)
+                
                 // Category List
                 CategoryListView
                 
             }
-            .padding(30)
         }
     }
     
     
     // Category List View
-    
     var CategoryListView: some View {
         HStack  {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -52,7 +52,7 @@ struct Home: View {
                                 if item.title != "All" {
                                     Image(item.icon)
                                         .resizable()
-                                            .frame(width: 32.0, height: 32.0)
+                                        .frame(width: 32.0, height: 32.0)
                                         .foregroundStyle(selectedCategory == item.title ? .yellow : .black)
                                 }
                                 
@@ -66,6 +66,7 @@ struct Home: View {
                         }
                     }
                 }
+                .padding(.horizontal, 30)
             }
         }
     }
