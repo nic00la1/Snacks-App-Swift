@@ -34,6 +34,18 @@ struct Home: View {
                 // Category List
                 CategoryListView
                 
+                // Collection View
+                HStack {
+                 Text("Choco **Collections**")
+                        .font(.system(size: 24))
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.right")
+                        .imageScale(.large)
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, 15)
             }
         }
     }
