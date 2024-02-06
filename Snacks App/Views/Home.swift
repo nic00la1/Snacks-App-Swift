@@ -36,7 +36,7 @@ struct Home: View {
                 
                 // Collection View
                 HStack {
-                 Text("Choco **Collections**")
+                    Text("Choco **Collections**")
                         .font(.system(size: 24))
                     
                     Spacer()
@@ -103,50 +103,62 @@ struct ProductCard: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                Text("\(product.name)")
-                    .font(.system(size: 36, weight: .semibold))
+            Image(product.image)
+                .resizable()
+                .frame(maxWidth: 320)
+                .frame(maxHeight: 330)
+                .scaledToFill()
+                .padding(.trailing, -100)
+                .rotationEffect(Angle(degrees: 1 ))
+            
+            ZStack {
                 
-                Text("\(product.category)")
-                    .font(.callout)
-                    .padding()
-                    .background(.white.opacity(0.5))
-                    .clipShape(Capsule())
-                
-                Spacer()
-                
-                HStack {
-                    Text("$\(product.price).0")
-                        .font(.system(size: 24, weight: .semibold))
+                VStack(alignment: .leading, content: {
+                    Text("\(product.name)")
+                        .font(.system(size: 36, weight: .semibold))
+                    
+                    Text("\(product.category)")
+                        .font(.callout)
+                        .padding()
+                        .background(.white.opacity(0.5))
+                        .clipShape(Capsule())
                     
                     Spacer()
                     
-                    Button {
+                    HStack {
+                        Text("$\(product.price).0")
+                            .font(.system(size: 24, weight: .semibold))
                         
-                    } label: {
-                        Image(systemName: "basket")
-                            .imageScale(.large)
-                            .frame(width: 90, height: 68)
-                            .background(.black)
-                            .clipShape(Capsule())
-                            .foregroundStyle(.white)
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "basket")
+                                .imageScale(.large)
+                                .frame(width: 90, height: 68)
+                                .background(.black)
+                                .clipShape(Capsule())
+                                .foregroundStyle(.white)
+                        }
+                        
                     }
+                    .padding()
+                    .padding(.leading)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 80)
+                    .background(.white.opacity(0.9))
+                    .clipShape(Capsule())
                     
-                }
-                .padding()
-                .padding(.leading)
-                .frame(maxWidth: .infinity)
-                .frame(height: 80)
-                .background(.white.opacity(0.5))
-                .clipShape(Capsule())
-                
-                
-            })
+                    
+                })
+            }
+            
+            .padding(30)
+            .frame(width: 336, height: 422)
+            .background(product.color.opacity(0.13))
+            .clipShape(.rect(cornerRadius: 57))
+            .padding(.leading, 20)
         }
-        .padding(30)
-        .frame(width: 336, height: 422)
-        .background(product.color.opacity(0.13))
-        .clipShape(.rect(cornerRadius: 57))
-        .padding(.leading, 20)
     }
 }
