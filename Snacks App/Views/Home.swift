@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Home: View {
+    
+    // Category View Properties
+    @State var selectedCategory = ""
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -25,8 +29,32 @@ struct Home: View {
                         .frame(width: 70, height: 90)
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke().opacity(0.4))
                 }
+                // Category List
+                CategoryListView
+                
             }
             .padding(30)
+        }
+    }
+    
+    
+    // Category List View
+    
+    var CategoryListView: some View {
+        HStack  {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(categoryList, id: \.id) { item in
+                        Button {
+                            selectedCategory = item.title
+                        } label: {
+                            HStack {
+                                Image(item.icon)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

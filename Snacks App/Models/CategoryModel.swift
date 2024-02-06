@@ -17,5 +17,5 @@ var categoryList: [CategoryModel] = [
     CategoryModel(icon: "", title: "All"),
     CategoryModel(icon: "choco", title: "Choco"),
     CategoryModel(icon: "waffles", title: "Waffles"),
-    CategoryModel(icon: "toffee", title: "Toffee")
+    CategoryModel(icon: "toffee", title: "Toffee"),
 ]
