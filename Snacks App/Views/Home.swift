@@ -49,8 +49,20 @@ struct Home: View {
                             selectedCategory = item.title
                         } label: {
                             HStack {
-                                Image(item.icon)
+                                if item.title != "All" {
+                                    Image(item.icon)
+                                        .resizable()
+                                            .frame(width: 32.0, height: 32.0)
+                                        .foregroundStyle(selectedCategory == item.title ? .yellow : .black)
+                                }
+                                
+                                
+                                Text(item.title)
                             }
+                            .padding(20)
+                            .background(selectedCategory == item.title ? .black.opacity(0.7) : .gray.opacity(0.1))
+                            .foregroundStyle(selectedCategory != item.title ? .black : .white)
+                            .clipShape(Capsule())
                         }
                     }
                 }
