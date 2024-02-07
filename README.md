@@ -1,5 +1,3 @@
-
-https://github.com/nic00la1/Snacks-App-Swift/assets/99048749/7d3d96fa-7290-4107-be41-b27aa40de11c
 # Snacks App
 
 <div align="center">
