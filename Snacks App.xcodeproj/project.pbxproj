@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B39898602B73BACA00A5BF95 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398985F2B73BACA00A5BF95 /* CartManager.swift */; };
 		B3F41F802B72A6AB00E362F6 /* Snacks_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F41F7F2B72A6AB00E362F6 /* Snacks_AppApp.swift */; };
 		B3F41F822B72A6AB00E362F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F41F812B72A6AB00E362F6 /* ContentView.swift */; };
 		B3F41F842B72A6AC00E362F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F41F832B72A6AC00E362F6 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B398985F2B73BACA00A5BF95 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		B3F41F7C2B72A6AB00E362F6 /* Snacks App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snacks App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F41F7F2B72A6AB00E362F6 /* Snacks_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snacks_AppApp.swift; sourceTree = "<group>"; };
 		B3F41F812B72A6AB00E362F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				B3F41F922B72AE2100E362F6 /* CategoryModel.swift */,
 				B3F41F942B72BFAF00E362F6 /* ProductModel.swift */,
+				B398985F2B73BACA00A5BF95 /* CartManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F41F992B72D55500E362F6 /* CollectionView.swift in Sources */,
+				B39898602B73BACA00A5BF95 /* CartManager.swift in Sources */,
 				B3F41F9B2B72D7C600E362F6 /* CartView.swift in Sources */,
 				B3F41F822B72A6AB00E362F6 /* ContentView.swift in Sources */,
 				B3F41F932B72AE2100E362F6 /* CategoryModel.swift in Sources */,

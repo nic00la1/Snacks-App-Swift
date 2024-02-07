@@ -10,7 +10,9 @@ import SwiftUI
 struct Home: View {
     
     // Category View Properties
-    @State var selectedCategory = ""
+    @State var selectedCategory = "Choco"
+    
+    @EnvironmentObject var cartManager: CartManager
     
     var body: some View {
         NavigationStack {
@@ -42,11 +44,13 @@ struct Home: View {
                         
                         Spacer()
                         
-                        NavigationLink(destination: CollectionView()) {
+                        NavigationLink(destination: CollectionView().environmentObject(cartManager)) {
+                            
                             Image(systemName: "arrow.right")
                                 .imageScale(.large)
-                                .foregroundStyle(.black)
+                                
                         }
+                        .foregroundStyle(.black)
                         
                     }
                     .padding(.horizontal, 30)
@@ -57,6 +61,7 @@ struct Home: View {
                         HStack {
                             ForEach(productList, id: \.id) { item in
                                 ProductCard(product: item)
+                                    .environmentObject(cartManager)
                             }
                         }
                     }
@@ -101,11 +106,14 @@ struct Home: View {
 
 #Preview {
     Home()
+        .environmentObject(CartManager())
 }
 
 // Product Card View
 struct ProductCard: View {
     var product: Product
+    
+    @EnvironmentObject var cartManager: CartManager
     
     var body: some View {
         ZStack {
@@ -138,7 +146,7 @@ struct ProductCard: View {
                         Spacer()
                         
                         Button {
-                            
+                            cartManager.addToCart(product: product)
                         } label: {
                             Image(systemName: "basket")
                                 .imageScale(.large)
@@ -147,6 +155,7 @@ struct ProductCard: View {
                                 .clipShape(Capsule())
                                 .foregroundStyle(.white)
                         }
+                        .padding(.horizontal, -10)
                         
                     }
                     .padding()

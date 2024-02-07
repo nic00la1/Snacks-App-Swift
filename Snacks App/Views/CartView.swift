@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CartView: View {
+    
+    @EnvironmentObject var cartManager: CartManager
+    
     @Environment(\.presentationMode) var mode
     
     var body: some View {
@@ -106,6 +109,7 @@ struct CartView: View {
 
 #Preview {
     CartView()
+        .environmentObject(CartManager())
 }
 
 // Cart Product View
