@@ -49,6 +49,7 @@ struct CollectionView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
     }
 }
 
@@ -59,6 +60,7 @@ struct CollectionView: View {
 
 // Small Product Card
 struct SmallProductCard: View {
+    
     var product: Product
     
     @EnvironmentObject var cartManager: CartManager
@@ -74,7 +76,6 @@ struct SmallProductCard: View {
                 .rotationEffect(Angle(degrees: 1 ))
             
             ZStack {
-                
                 VStack(alignment: .leading, content: {
                     Text("\(product.name)")
                         .font(.system(size: 18, weight: .semibold))

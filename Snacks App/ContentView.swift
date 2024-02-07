@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @StateObject var cartManager = CartManager()
     
     var body: some View {
         
-        NavigationStack {
+        NavigationView {
             ZStack(alignment: .bottom) {
                 Home()
                     .environmentObject(cartManager)
                 
                 if cartManager.products.count > 0 {
-                    NavigationLink(destination: CartView()) {
+                    NavigationLink(destination: CartView().environmentObject(cartManager)) {
                         HStack(spacing: 30) {
                             Text("\(cartManager.products.count)")
                                 .padding()
@@ -44,7 +45,6 @@ struct ContentView: View {
                                     .background(.white)
                                     .clipShape(Circle())
                                     .padding(.leading, -60)
-                                
                             }
                         }
                         .padding(30)
@@ -52,12 +52,13 @@ struct ContentView: View {
                         .background(.black)
                         .clipShape(.rect(topLeadingRadius: 60, topTrailingRadius: 60))
                         .foregroundStyle(.white)
-                        .edgesIgnoringSafeArea(.bottom)
+                        
                     }
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

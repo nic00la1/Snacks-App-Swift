@@ -111,6 +111,7 @@ struct Home: View {
 
 // Product Card View
 struct ProductCard: View {
+    
     var product: Product
     
     @EnvironmentObject var cartManager: CartManager
