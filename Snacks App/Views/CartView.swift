@@ -51,10 +51,14 @@ struct CartView: View {
                     .padding(23)
                     
                     // Cart Products
-                    /*ForEach(productList) { item in
-                     CartProductCard(product: item)
-                     }
-                     */
+                    VStack(spacing: 20) {
+                        ForEach(productList) { item in
+                         CartProductCard(product: item)
+                         }
+                    }
+                    .padding(.horizontal)
+                    
+                     
                     // Total Amount
                     
                     VStack(alignment: .leading) {
@@ -82,7 +86,18 @@ struct CartView: View {
                     
                     // Button to Make Payment
                     
-                    
+                    Button {
+                        
+                    } label: {
+                        Text("Make Payment")
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                            .frame(height: 80)
+                            .background(.yellow.opacity(0.5))
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundStyle(.black)
+                            .clipShape(Capsule())
+                            .padding()
+                    }
                 }
             }
         }
