@@ -51,11 +51,34 @@ struct CartView: View {
                     .padding(23)
                     
                     // Cart Products
-                    ForEach(productList) { item in
-                        CartProductCard(product: item)
-                    }
-                    
+                    /*ForEach(productList) { item in
+                     CartProductCard(product: item)
+                     }
+                     */
                     // Total Amount
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Delivery Amount")
+                            Spacer()
+                            Text("$4.00")
+                                .font(.system(size: 24, weight: .semibold))
+                        }
+                        
+                        Divider()
+                        
+                        Text("Total Amount")
+                            .font(.system(size: 24))
+                        
+                        Text("USD 38.00")
+                            .font(.system(size: 36, weight: .semibold))
+                        
+                    }
+                    .padding(30)
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    .background(.yellow.opacity(0.5))
+                    .clipShape(.rect(cornerRadius: 30))
+                    . padding()
                     
                     // Button to Make Payment
                     
@@ -65,10 +88,10 @@ struct CartView: View {
         }
     }
 }
-    
-    #Preview {
-        CartView()
-    }
+
+#Preview {
+    CartView()
+}
 
 // Cart Product View
 struct CartProductCard: View {
